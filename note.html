@@ -5,15 +5,16 @@
   <meta charset="utf-8">
   <title>Create Note</title>
   <!-- CSS -->
+  <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/note.css">
 
 </head>
 
 <body>
   <div class="container">
-    <form class="create_new_note" action="index.html" method="post">
+    <form class="create_new_note" action="index.html" method="get">
       <label for="title-note">Title</label>
-      <input type="text" id="title-note" name="title" value="">
+      <input type="text" id="title-note" name="title" value="" required>
 
       <label for="description-note">Description</label>
       <textarea name="description" id="description-note" rows="8" cols="80"></textarea>
@@ -26,12 +27,14 @@
       <label for="datepicker">Done Until</label>
       <input type="text" id="datepicker" name="datepicker" value="2018-05-15">
 
-      <button type="submit" name="button">Save</button>
+      <button type="submit">Save</button>
 
       <button class="cancel" onclick="goBack()">Cancel</button>
     </form>
   </div>
   <!-- JS -->
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/note.js"></script>
 </body>
 
