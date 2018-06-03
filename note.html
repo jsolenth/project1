@@ -21,7 +21,8 @@
 
       <label for="importance-note">Importance</label>
       <div class="rating">
-        <span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span>
+        <input id="rating" type="number" min="0" max="5">
+        <!-- span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span -->
       </div>
 
       <label for="datepicker">Done Until</label>
@@ -29,13 +30,16 @@
 
       <button type="submit">Save</button>
 
-      <button class="cancel" onclick="goBack()">Cancel</button>
+      <button class="cancel">Cancel</button>
     </form>
   </div>
   <!-- JS -->
-
+  <script type="text/javascript" src="js/array.js"></script>
+  <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+  <script type="text/javascript" src="js/data.js"></script>
   <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/note.js"></script>
+  <script type="text/javascript" src="js/modelNode.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>

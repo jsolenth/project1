@@ -5,19 +5,33 @@
 ;(function ($, window, document, undefined) {
 
     "use strict";
+    if(document.getElementById("note-template")){
+        var source = document.getElementById("note-template").innerHTML;
+        var template = Handlebars.compile(source);
+    }
 
-    var source = document.getElementById("note-template").innerHTML;
-    var template = Handlebars.compile(source);
 
     $(function () {
         /*test hanlebars*/
 
 
         createAllStylesFromStorage();
-        createAllNotesFromStorage();
+        if(template){
+            createAllNotesFromStorage();
+        }
+        if(sessionStorage.getItem('update-note')) {
+            //TODO: update Note maybe check in other way
+            let note = notesRepo.getNoteById(sessionStorage.getItem('update-note'));
+            console.log(note);
+            $('#title-note').val(note.title);
+            $('#description-note').val(note.description);
+            $('#datepicker').val(note.finishedDate);
+            $('#rating').val(note.rating)
+        }
 
-        function createAllNotesFromStorage(){
-            let context = notesRepo.getStorage();
+
+        function createAllNotesFromStorage(sorting){
+            let context = notesRepo.getStorage(sorting);
             let html =  '';
             for (let i = 0; i < context.length; ++i) {
                 html += template(context[i]);
@@ -37,15 +51,25 @@
 
 
             styleSelect.change(function (event) {
-                changeStyleToSelected();
+                changeStyleToSelected($('.styles-page option:selected').val());
                 console.log(event);
             });
 
-            function changeStyleToSelected(){
-                $('.container').removeClass($('.styles-page option').map(function () {
-                    return $(this).val();
-                }).get().join(' ')).addClass($('.styles-page option:selected').val())
-                styleRepo.changeDefaultStyle($('.styles-page option:selected').val());
+            function changeStyleToSelected($newStyleVal){
+
+
+                // $('.container').removeClass($('.styles-page option').map(function () {
+                //     return $(this).val();
+                // }).get().join(' ')).addClass($('.styles-page option:selected').val())
+
+                if($newStyleVal){
+                    $('.container').removeClass(styleRepo.getAllStyleValues().join(' ')).addClass($newStyleVal)
+                    styleRepo.changeDefaultStyle($newStyleVal);
+                }else{
+                    $('.container').removeClass(styleRepo.getAllStyleValues().join(' ')).addClass(styleRepo.getDefault().value)
+                }
+
+
             }
 
         }
@@ -60,36 +84,44 @@
 
         //Eventhandler
 
-        $('.create-new-note').click(function (event) {
-            notesRepo.addNote({title: "My New Post", description: "This is my first post!", finishedDate:'2018.06.01',createdDate:'',rating:1})
-            updateView()
-            //window.location.href = 'note.html'
+        $('.create-new-note').on('click', function (event) {
+            //notesRepo.addNote({title: "My New Post", description: "This is my first post!", finishedDate:'2018.06.01',createdDate:'',rating:1})
+            //updateView()
+            window.location.href = 'note.html'
         });
 
+        $('.cancel').on('click',function (event) {
+            window.history.back();
+        });
 
-        if (getUrlParameter('title') && getUrlParameter('datepicker')) {
-            console.log(getUrlParameter('title'));
-            console.log(getUrlParameter('description'));
-            console.log(getUrlParameter('datepicker'));
-            createNewNote(getUrlParameter('title'))
-        }
+        $('.sort-options button').on('click', function(){
+            createAllNotesFromStorage(event.target.value);
+        })
+
+        $('form.create_new_note').on('submit',function (event) {
+            event.preventDefault();
+            if(sessionStorage.getItem('update-note')){
+                //update Note
+                let noteId = sessionStorage.getItem('update-note');
+                let note = notesRepo.getNoteById(noteId);
+                notesRepo.updateNotes(note, {title: $('#title-note').val(), description: $('#description-note').val(), finishedDate:$('#datepicker').val(),createdDate:moment().format(),rating:$('#rating').val()})
+                sessionStorage.removeItem('update-note');
+            }else{
+                //new Note
+                notesRepo.addNote({title: $('#title-note').val(), description: $('#description-note').val(), finishedDate:$('#datepicker').val(),createdDate:moment().format(),rating:$('#rating').val()})
+            }
+
+            window.location.href = 'index.html'
+        });
+
+        $('.main .note button').on('click', function(){
+            let noteId = event.target.value;
+            sessionStorage.setItem('update-note', noteId);
+            window.location.href = 'note.html'
+            console.log('edit btn')
+        })
 
 
     })
 
-
-    var getUrlParameter = function (sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
 })(jQuery, window, document);

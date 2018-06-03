@@ -8,8 +8,11 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
     <script id="note-template" type="text/x-handlebars-template">
         <div id="{{id}}" class="note">
-            <div class=" "><input type="checkbox" id="donecheckbox" name="donecheckbox" value="0"><label
-                    for="donecheckbox">checkbox done</label></div>
+            <div class=" ">
+                <h4>{{finishedDate}}</h4>
+                <input type="checkbox" id="donecheckbox" name="donecheckbox" value="0"><label
+                    for="donecheckbox">checkbox done</label>
+            </div>
             <div class=" ">
                 <h4>{{title}}</h4>
                 <div class=" ">{{rating}}</div>
@@ -18,7 +21,7 @@
                 </div>
             </div>
             <div class="">
-                <button type="button" name="button">Edit</button>
+                <button value="{{id}}" type="button" name="button">Edit</button>
             </div>
         </div>
     </script>
@@ -35,10 +38,10 @@
             <!-- option value="dark-layout">Style 1</option>
             <option value="light-layout">Style 2</option -->
         </select>
-        <div class="filter-options tab">
-            <button type="button" name="button">By Finish Date</button>
-            <button type="button" name="button">By Created Date</button>
-            <button type="button" name="button">By Importance</button>
+        <div class="sort-options tab">
+            <button type="button" value="finishedDate" name="button">By Finish Date</button>
+            <button type="button" value="createdDate" name="button">By Created Date</button>
+            <button type="button" value="rating" name="button">By Importance</button>
         </div>
 
         <button class="filter-options" type="button" name="button">Show Finished</button>
@@ -50,6 +53,8 @@
 </div>
 
 <!-- JS -->
+<script type="text/javascript" src="js/array.js"></script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="js/data.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/modelNode.js"></script>

@@ -22,6 +22,13 @@ const notesRepo = (function(){
             this.createdDate = paramObj.createdDate;
             this.rating = paramObj.rating;
         }
+        update(paramObj){
+            this.title = paramObj.title;
+            this.description = paramObj.description;
+            this.finishedDate = paramObj.finishedDate;
+            this.createdDate = paramObj.createdDate;
+            this.rating = paramObj.rating;
+        }
     }
     function makeid() {
         var text = "";
@@ -33,8 +40,14 @@ const notesRepo = (function(){
         return text;
     }
 
-    function getStorage() {
-        return storage;
+    //get Notes (order, filter)
+    function getStorage(orderStr, filterStr) {
+        if(orderStr){
+            return storage.sortByProb(orderStr);
+        }else {
+            return storage;
+        }
+
     }
 
     function addNote(paramObj){
@@ -43,8 +56,22 @@ const notesRepo = (function(){
         noteStorage.persist(storage);
         return note;
     }
+    function updateNotes(note, paramObj){
+        note.title = paramObj.title
+        note.title = paramObj.title;
+        note.description = paramObj.description;
+        note.finishedDate = paramObj.finishedDate;
+        note.createdDate = paramObj.createdDate;
+        note.rating = paramObj.rating;
+        //note.update(paramObj); //TODO: wieso geht das nich über die object methode?
+        noteStorage.persist(storage);
 
-    return {getStorage, addNote };
+    }
+    function getNoteById(id){
+        let note = storage.findById(id)
+        return note;
+    }
+    return {getStorage, addNote, getNoteById, updateNotes};
 })();
 
 const styleRepo = (function(){
@@ -71,11 +98,25 @@ const styleRepo = (function(){
         }
         styleStorage.persist(storageOfStyle);
     }
+    function getAllStyleValues(){
+        let list = storageOfStyle;
+
+        return list.map(x => x.value)
+    }
+    function getDefault(){
+        let list = storageOfStyle;
+        for (let i = 0; i < list.length; ++i) {
+            if(list[i].default){
+                return list[i]
+            }
+        }
+        return null;
+    }
 
     function getStorage() {
         return storageOfStyle;
     }
-    return {getStorage, changeDefaultStyle};
+    return {getStorage, changeDefaultStyle, getDefault, getAllStyleValues};
 })();
 
 
