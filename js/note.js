@@ -1,3 +1,8 @@
+/**
+ *
+ * Controller note form
+ */
+
 let noteObj = null;
 $(function(){
 

@@ -71,5 +71,8 @@
   background-color: rgba(122, 122, 122, 0.8);
 }
 
-.main>div {
+div.note {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-gap: 10px;
 }
