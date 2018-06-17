@@ -1,64 +1,79 @@
-  .rating>span {
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+
+.rating > span {
     display: inline-block;
     position: relative;
     width: 1.1em;
-  }
+}
 
-  .rating>span:hover:before, .rating>span:hover~span:before {
-    color: #FF0;
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+    content: "\2620";
+    left: 1px;
     position: absolute;
-  }
+}
+.rating span.rate:before{
+    left: 1px;
+    position: absolute;
+    content: "\2620";
+}
 
-  form {
+
+form {
     display: grid;
     padding: 1em;
     /*background: #f9f9f9;*/
     border: 1px solid #c1c1c1;
-  }
+}
 
-  form input {
+form input {
     background: #fff;
     border: 1px solid #9c9c9c;
-  }
+}
 
-  form button {
+form button {
     background: lightgrey;
     padding: 0.7em;
     width: 100%;
     border: 0;
-  }
+}
 
-  form button:hover {
+form button:hover {
     background: gold;
-  }
+}
 
-  label {
+label {
     padding: 0.5em 0.5em 0.5em 0;
-  }
+}
 
-  input {
+input {
     padding: 0.7em;
     margin-bottom: 0.5rem;
-  }
+}
 
-  input:focus {
+input:focus {
     outline: 3px solid gold;
-  }
+}
 
-  form textarea {
+form textarea {
     resize: vertical;
-  }
+}
 
-  @media (min-width: 400px) {
+@media (min-width: 400px) {
     form {
-      grid-template-columns: 200px 1fr;
-      grid-gap: 16px;
+        grid-template-columns: 200px 1fr;
+        grid-gap: 16px;
     }
+
     label {
-      text-align: right;
-      grid-column: 1 / 2;
+        text-align: right;
+        grid-column: 1 / 2;
     }
+
     input, button {
-      grid-column: 2 / 3;
+        grid-column: 2 / 3;
     }
-  }
+}

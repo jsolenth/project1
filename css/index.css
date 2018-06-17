@@ -24,6 +24,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   display: grid;
   grid-gap: 10px;
+  padding: 4px;
 }
 
 .header .create-new-note {
@@ -75,4 +76,11 @@ div.note {
   display: grid;
   grid-template-columns: 200px 1fr 200px;
   grid-gap: 10px;
+  background-color: #8db243;
+  margin: 5px 0;
+  padding: 3px;
+}
+.title-area{
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
