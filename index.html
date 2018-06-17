@@ -10,18 +10,20 @@
         <div id="{{id}}" class="note">
             <div class=" ">
                 <h4>{{finishedDate}}</h4>
-                <input type="checkbox" id="donecheckbox" name="donecheckbox" value="0"><label
-                    for="donecheckbox">checkbox done</label>
+                <label><input type="checkbox" class="donecheckbox" name="donecheckbox" value="{{id}}" {{greetText
+                              finished}}>checkbox done</label>
             </div>
             <div class=" ">
-                <h4>{{title}}</h4>
-                <div class=" ">{{rating}}</div>
-                <div class=" ">
+                <div class="title-area"><h4>{{title}}</h4>
+                    <div class=" ">{{{ratingsym rating}}}</div>
+                </div>
+                <div class="description-area">
                     {{description}}
                 </div>
             </div>
             <div class="">
-                <button value="{{id}}" type="button" name="button">Edit</button>
+                <button value="{{id}}" type="button" name="edit">Edit</button>
+                <button value="{{id}}" type="button" name="delete">Delete</button>
             </div>
         </div>
     </script>

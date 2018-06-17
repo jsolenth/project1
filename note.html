@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Create Note</title>
   <!-- CSS -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/note.css">
 
@@ -19,14 +20,14 @@
       <label for="description-note">Description</label>
       <textarea name="description" id="description-note" rows="8" cols="80"></textarea>
 
-      <label for="importance-note">Importance</label>
+      <label>Importance</label>
       <div class="rating">
-        <input id="rating" type="number" min="0" max="5">
-        <!-- span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span><span>&#x26A1;</span -->
+        <!-- input id="rating" type="number" min="0" max="5" -->
+        <span>&#9786;</span><span>&#9786;</span><span>&#9786;</span><span>&#9786;</span><span class="rate">&#9786;</span>
       </div>
 
       <label for="datepicker">Done Until</label>
-      <input type="text" id="datepicker" name="datepicker" value="2018-05-15">
+      <input type="text" id="datepicker" name="datepicker">
 
       <button type="submit">Save</button>
 
@@ -34,10 +35,11 @@
     </form>
   </div>
   <!-- JS -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="js/array.js"></script>
   <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
   <script type="text/javascript" src="js/data.js"></script>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/modelNode.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
 </body>

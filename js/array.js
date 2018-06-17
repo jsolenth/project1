@@ -7,9 +7,14 @@ Array.prototype.findById = function(id) {
 };
 
 
-Array.prototype.sortByProb = function(property) {
+Array.prototype.sortByProb = function(property, reverse) {
     property = String(property);
-    return this.sort(dynamicSort(property))
+    reverse = Boolean(reverse);
+    if(reverse){
+        return this.sort(dynamicSort(property)).reverse();
+    }else{
+        return this.sort(dynamicSort(property));
+    }
 
     function dynamicSort(property) {
         var sortOrder = 1;
@@ -24,3 +29,14 @@ Array.prototype.sortByProb = function(property) {
     }
 };
 
+Array.prototype.filterByProb = function(property) {
+    property = Boolean(property);
+
+    return this.filter(isBigEnough(property));
+
+    function isBigEnough(property) {
+        return function(obj, idx, array,) {
+            return obj.finished == property;
+        }
+    }
+};
