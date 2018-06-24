@@ -49,6 +49,9 @@ class NoteStore {
         return await this.db.update({_id: id }, noteObj);
         //return await this.get({_id: id});
     }
+    async updateAdding(id, noteObjAdd){
+        return await this.db.update({_id: id }, { $set: noteObjAdd });
+    }
 
     async get(id) {
         return await this.db.findOne({_id: id});

@@ -23,10 +23,12 @@
         //}
 
 
-        function renderNotes()
+        function renderNotes( orderStr, reverse,  filterStr)
         {
             client.getNotes().done(function(notes){
                 //createAllNotesFromStorage
+
+                notes = sortFilter(notes, orderStr, reverse,  filterStr)
                 if(notes.length){
                     let html = '';
                     for (let i = 0; i < notes.length; ++i) {
@@ -37,17 +39,20 @@
                 }
 
             })
-        }
 
-
-        function createAllNotesFromStorage(sorting, reverse, filter) {
-            let context = notesRepo.getStorage(sorting, reverse, filter);
-            let html = '';
-            for (let i = 0; i < context.length; ++i) {
-                html += notesRenderer(context[i]);
+            function sortFilter(notesArr, orderStr, reverse,  filterStr) {
+                if(orderStr){
+                        return notesArr.filterByProb(filterStr).sortByProb(orderStr, reverse);
+                    }else {
+                        return notesArr.filterByProb(filterStr);
+                    }
             }
-            $('.main').html(html);
         }
+
+
+
+
+
 
         function createAllStylesFromStorage() {
             let styleSelect = $('.styles-page');
@@ -90,15 +95,14 @@
 
 
         function updateView() {
-            createAllNotesFromStorage();
+            renderNotes();
+            //createAllNotesFromStorage();
         }
 
 
         //Eventhandler
 
         btnNewNote.on('click', function (event) {
-            //notesRepo.addNote({title: "My New Post", description: "This is my first post!", finishedDate:'2018.06.01',createdDate:'',rating:1})
-            //updateView()
             window.location.href = 'note.html'
         });
 
@@ -108,19 +112,19 @@
             btnSort.not($(this)).removeClass('active').removeClass('active2')
             if (!$(this).hasClass('active') && !$(this).hasClass('active2')) {
                 $(this).addClass('active');
-                createAllNotesFromStorage(event.target.value, true, btnFilter.hasClass('active'));
+                renderNotes(event.target.value, true, btnFilter.hasClass('active'));
             } else {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active').addClass('active2');
 
                     console.log('active2')
-                    createAllNotesFromStorage(event.target.value, false, btnFilter.hasClass('active'));
+                    renderNotes(event.target.value, false, btnFilter.hasClass('active'));
 
                 } else if ($(this).hasClass('active2')) {
                     //   $(this).removeClass('active2');
                     //}else{
                     $(this).addClass('active').removeClass('active2');
-                    createAllNotesFromStorage(event.target.value, true, btnFilter.hasClass('active'));
+                    renderNotes(event.target.value, true, btnFilter.hasClass('active'));
                 }
             }
         })
@@ -129,10 +133,10 @@
                 console.log('filter-option')
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
-                    createAllNotesFromStorage(false, false, false);
+                    renderNotes(false, false, false);
                 } else {
                     $(this).addClass('active');
-                    createAllNotesFromStorage(false, false, true);
+                    renderNotes(false, false, true);
                 }
         })
 
@@ -153,21 +157,22 @@
                 console.log(msg);
                 //nothing!
             });
-
-
-            // let note = notesRepo.getNoteById(noteId);
-            // //sessionStorage.setItem('update-note', noteId);
-            // notesRepo.removeNote(note);
-            // updateView();
         })
 
 
         mainDiv.on('click', '.note input', function () {
+            //done
             let noteId = event.target.value;
             let checked = event.target.checked;
-            let note = notesRepo.getNoteById(noteId);
-            notesRepo.updateNotesFinished(note, checked);
-            console.log('donecheckbox btn');
+            client.updateNoteWith(noteId, {
+                finished:checked
+            }).done(function (msg) {
+                renderNotes();
+            }).fail(function( msg ) {
+                console.log(msg);
+                //nothing!
+            });
+
         })
     })
 

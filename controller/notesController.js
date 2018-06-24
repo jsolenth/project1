@@ -24,6 +24,9 @@ const noteStore = require('../services/noteStore');
         }
 
     };
+    async updateNoteAdding(req, res) {
+            res.json(await noteStore.updateAdding(req.params.id, req.body));
+    };
 
     async showNote(req, res) {
         res.json(await noteStore.get(req.params.id));

@@ -21,6 +21,10 @@
         return ajaxUtil.ajax("POST", `/note/${id}`, noteObj, {});
     }
 
+    function updateNoteWith(id, noteObjAdd) {
+        return ajaxUtil.ajax("POST", `/noteAdding/${id}`, noteObjAdd, {});
+    }
+
     function deleteNote(id) {
         return ajaxUtil.ajax("POST", `/note/${id}`, {delete:true}, {});
     }
@@ -30,6 +34,7 @@
         getNotes: getNotes,
         updateNote:updateNote,
         getNote: getNote,
-        deleteNote: deleteNote
+        deleteNote: deleteNote,
+        updateNoteWith:updateNoteWith
     };
 }(window.services = window.services || {}, jQuery));
