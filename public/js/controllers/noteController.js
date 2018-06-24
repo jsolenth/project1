@@ -12,6 +12,10 @@
         const btnCancel = $('.cancel');
         const btnNewNote = $('form.create_new_note');
 
+        $('.container').removeClass(styleRepo.getAllStyleValues().join(' ')).addClass(styleRepo.getDefault().value);
+
+
+
         inputDate.datepicker({
             dateFormat: "yy-mm-dd",
             defaultDate: 0
@@ -68,14 +72,6 @@
                     //nothing!
                 });
 
-                // let note = notesRepo.getNoteById(noteId);
-                // notesRepo.updateNotes(note, {
-                //     title: $('#title-note').val(),
-                //     description: $('#description-note').val(),
-                //     finishedDate: $('#datepicker').val(),
-                //     createdDate: moment().format(),
-                //     rating: $( ".rating span.rate" ).length
-                // })
                 sessionStorage.removeItem('update-note');
             } else {
                 //new Note
@@ -94,8 +90,6 @@
                 event.preventDefault();
             }
 
-
-            //window.location.href = 'index.html';
 
         });
 

@@ -16,11 +16,9 @@
 
 
 
-        //createAllStylesFromStorage();
-        //if (notesRenderer) {
-            //createAllNotesFromStorage();
-            renderNotes();
-        //}
+        createAllStylesFromStorage();
+
+        renderNotes();
 
 
         function renderNotes( orderStr, reverse,  filterStr)
@@ -51,9 +49,6 @@
 
 
 
-
-
-
         function createAllStylesFromStorage() {
             let styleSelect = $('.styles-page');
 
@@ -66,13 +61,14 @@
                     selected: options[i].default
                 }));
             }
-            changeStyleToSelected();
+
 
 
             styleSelect.change(function (event) {
                 changeStyleToSelected($('.styles-page option:selected').val());
                 console.log(event);
             });
+            changeStyleToSelected(styleSelect.val());
 
             function changeStyleToSelected($newStyleVal) {
 
@@ -91,12 +87,6 @@
 
             }
 
-        }
-
-
-        function updateView() {
-            renderNotes();
-            //createAllNotesFromStorage();
         }
 
 
