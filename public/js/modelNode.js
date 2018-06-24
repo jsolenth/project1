@@ -2,93 +2,93 @@
  *
  * Model
  */
-const notesRepo = (function(){
-    "use strict";
+// const notesRepo = (function(){
+//     "use strict";
+//
+//     const storage = noteStorage.getAll();
+//
+//     //fill if empty
+//     /*if (storage.length === 0) {
+//         addNote({title: "My New Post", description: "This is my first post!", finishedDate:'2018.06.01',createdDate:'',rating:1})
+//
+//     }*/
+//
+//     class Note{
+//         constructor(paramObj){
+//             this.id = makeid();
+//             this.title = paramObj.title;
+//             this.description = paramObj.description;
+//             this.finishedDate = paramObj.finishedDate;
+//             this.createdDate = paramObj.createdDate;
+//             this.rating = paramObj.rating;
+//             this.finished = false;
+//         }
+//         // update(paramObj){
+//         //     this.title = paramObj.title;
+//         //     this.description = paramObj.description;
+//         //     this.finishedDate = paramObj.finishedDate;
+//         //     this.createdDate = paramObj.createdDate;
+//         //     this.rating = paramObj.rating;
+//         // }
+//     }
+//     function makeid() {
+//         let text = "";
+//         let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//
+//         for (let i = 0; i < 5; i++)
+//             text += possible.charAt(Math.floor(Math.random() * possible.length));
+//
+//         return text;
+//     }
+//
+//     //get Notes (order, filter)
+//     function getStorage(orderStr, reverse,  filterStr) {
+//             if(orderStr){
+//                 return storage.filterByProb(filterStr).sortByProb(orderStr, reverse);
+//             }else {
+//                 return storage.filterByProb(filterStr);
+//             }
+//     }
+//
+//     function addNote(paramObj){
+//         let note = new Note(paramObj);//TODO: eventuell gleich mehere Params
+//         storage.push(note);
+//         noteStorage.persist(storage);
+//         return note;
+//     }
+//     function removeNote(note){
+//
+//         let index = storage.indexOf(note);
+//         if (index > -1) {
+//             noteStorage.persist(storage.splice(index, 1));
+//         }
+//         return note;
+//     }
+//     function updateNotes(note, paramObj){
+//         note.title = paramObj.title
+//         note.title = paramObj.title;
+//         note.description = paramObj.description;
+//         note.finishedDate = paramObj.finishedDate;
+//         note.createdDate = paramObj.createdDate;
+//         note.rating = paramObj.rating;
+//         //note.update(paramObj); //TODO: wieso geht das nich über die object methode?
+//         noteStorage.persist(storage);
+//     }
+//
+//     function updateNotesFinished(note, finished){
+//         note.finished = finished;
+//         noteStorage.persist(storage);
+//     }
+//
+//
+//     function getNoteById(id){
+//         let note = storage.findById(id)
+//         return note;
+//     }
+//     return {getStorage, addNote, getNoteById, updateNotes, removeNote, updateNotesFinished};
+// })();
 
-    const storage = noteStorage.getAll();
-
-    //fill if empty
-    /*if (storage.length === 0) {
-        addNote({title: "My New Post", description: "This is my first post!", finishedDate:'2018.06.01',createdDate:'',rating:1})
-
-    }*/
-
-    class Note{
-        constructor(paramObj){
-            this.id = makeid();
-            this.title = paramObj.title;
-            this.description = paramObj.description;
-            this.finishedDate = paramObj.finishedDate;
-            this.createdDate = paramObj.createdDate;
-            this.rating = paramObj.rating;
-            this.finished = false;
-        }
-        // update(paramObj){
-        //     this.title = paramObj.title;
-        //     this.description = paramObj.description;
-        //     this.finishedDate = paramObj.finishedDate;
-        //     this.createdDate = paramObj.createdDate;
-        //     this.rating = paramObj.rating;
-        // }
-    }
-    function makeid() {
-        let text = "";
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        for (let i = 0; i < 5; i++)
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        return text;
-    }
-
-    //get Notes (order, filter)
-    function getStorage(orderStr, reverse,  filterStr) {
-            if(orderStr){
-                return storage.filterByProb(filterStr).sortByProb(orderStr, reverse);
-            }else {
-                return storage.filterByProb(filterStr);
-            }
-    }
-
-    function addNote(paramObj){
-        let note = new Note(paramObj);//TODO: eventuell gleich mehere Params
-        storage.push(note);
-        noteStorage.persist(storage);
-        return note;
-    }
-    function removeNote(note){
-
-        let index = storage.indexOf(note);
-        if (index > -1) {
-            noteStorage.persist(storage.splice(index, 1));
-        }
-        return note;
-    }
-    function updateNotes(note, paramObj){
-        note.title = paramObj.title
-        note.title = paramObj.title;
-        note.description = paramObj.description;
-        note.finishedDate = paramObj.finishedDate;
-        note.createdDate = paramObj.createdDate;
-        note.rating = paramObj.rating;
-        //note.update(paramObj); //TODO: wieso geht das nich über die object methode?
-        noteStorage.persist(storage);
-    }
-
-    function updateNotesFinished(note, finished){
-        note.finished = finished;
-        noteStorage.persist(storage);
-    }
-
-
-    function getNoteById(id){
-        let note = storage.findById(id)
-        return note;
-    }
-    return {getStorage, addNote, getNoteById, updateNotes, removeNote, updateNotesFinished};
-})();
-
-const styleRepo = (function(){
+/*const styleRepo = (function(){
     "use strict";
 
     const storageOfStyle = styleStorage.getAll();
@@ -131,7 +131,7 @@ const styleRepo = (function(){
         return storageOfStyle;
     }
     return {getStorage, changeDefaultStyle, getDefault, getAllStyleValues};
-})();
+})();*/
 
 
 

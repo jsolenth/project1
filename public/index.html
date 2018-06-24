@@ -5,28 +5,6 @@
     <meta charset="utf-8">
     <title>Note</title>
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-    <script id="note-template" type="text/x-handlebars-template">
-        <div id="{{id}}" class="note">
-            <div class=" ">
-                <h4>{{finishedDate}}</h4>
-                <label><input type="checkbox" class="donecheckbox" name="donecheckbox" value="{{id}}" {{greetText
-                              finished}}>checkbox done</label>
-            </div>
-            <div class=" ">
-                <div class="title-area"><h4>{{title}}</h4>
-                    <div class=" ">{{{ratingsym rating}}}</div>
-                </div>
-                <div class="description-area">
-                    {{description}}
-                </div>
-            </div>
-            <div class="">
-                <button value="{{id}}" type="button" name="edit">Edit</button>
-                <button value="{{id}}" type="button" name="delete">Delete</button>
-            </div>
-        </div>
-    </script>
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -54,13 +32,40 @@
     </div>
 </div>
 
+<script id="note-template" type="text/x-handlebars-template">
+    <div id="{{_id}}" class="note">
+        <div class=" ">
+            <h4>{{finishedDate}}</h4>
+            <label><input type="checkbox" class="donecheckbox" name="donecheckbox" value="{{_id}}" {{greetText
+                          finished}}>checkbox done</label>
+        </div>
+        <div class=" ">
+            <div class="title-area"><h4>{{title}}</h4>
+                <div class=" ">{{{ratingsym rating}}}</div>
+            </div>
+            <div class="description-area">
+                {{description}}
+            </div>
+        </div>
+        <div class="">
+            <button value="{{_id}}" type="button" name="edit">Edit</button>
+            <button value="{{_id}}" type="button" name="delete">Delete</button>
+        </div>
+    </div>
+</script>
 <!-- JS -->
 <script type="text/javascript" src="js/array.js"></script>
-<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
-<script type="text/javascript" src="js/data.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/modelNode.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+
+<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+<script type="text/javascript" src="js/utilis/ajaxUtil.js"></script>
+<script type="text/javascript" src="js/libs/moment-with-locales.min.js"></script>
+<!--<script type="text/javascript" src="js/data.js"></script>-->
+<script type="text/javascript" src="js/services/restClient.js"></script>
+<script type="text/javascript" src="js/controllers/indexController.js"></script>
+<!--<script type="text/javascript" src="js/modelNode.js"></script>-->
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+<script type="text/javascript" src="js/utilis/handlebarsHelpers.js"></script>
 </body>
 
 </html>

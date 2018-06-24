@@ -3,6 +3,7 @@
 /**
  * Note Storage
  */
+/*
 const noteStorage = (function(){
     "use strict";
 
@@ -26,11 +27,12 @@ const noteStorage = (function(){
     return { getAll, persist };// zur verfügung stellen nach aussen
 
 }()); //Idiom: Immediately-invoked Function Expression (IIFE)
+*/
 
 /**
  * Style Storage
  */
-const styleStorage = (function(){
+/*const styleStorage = (function(){
     "use strict";
 
     let storage = readFromLocalStorage();
@@ -52,6 +54,6 @@ const styleStorage = (function(){
 
     return { getAll, persist };// zur verfügung stellen nach aussen
 
-}()); //Idiom: Immediately-invoked Function Expression (IIFE)
+}()); //Idiom: Immediately-invoked Function Expression (IIFE)*/
 
 
