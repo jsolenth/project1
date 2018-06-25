@@ -46,6 +46,7 @@ class NoteStore {
     }
     async update(id, noteObj){
         noteObj.state = "OK";
+        noteObj.finished = false;
         return await this.db.update({_id: id }, noteObj);
         //return await this.get({_id: id});
     }
