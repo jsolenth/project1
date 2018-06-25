@@ -1,6 +1,4 @@
-
-
-const styleRepo = (function(){
+const styleRepo = (function () {
     "use strict";
 
     const storageOfStyle = styleStorage.getAll();
@@ -8,31 +6,33 @@ const styleRepo = (function(){
     //fill if empty
     if (storageOfStyle.length === 0) {
 
-        storageOfStyle.push({value: "dark-layout", name:"Style 1", default:true});
-        storageOfStyle.push({value: "light-layout", name:"Style 2", default:false});
+        storageOfStyle.push({value: "dark-layout", name: "Style 1", default: true});
+        storageOfStyle.push({value: "light-layout", name: "Style 2", default: false});
         styleStorage.persist(storageOfStyle);
     }
 
-    function changeDefaultStyle(defaultValue){
+    function changeDefaultStyle(defaultValue) {
         let list = storageOfStyle;
         for (let i = 0; i < list.length; ++i) {
-            if(list[i].value == defaultValue){
+            if (list[i].value == defaultValue) {
                 list[i].default = true;
-            }else{
+            } else {
                 list[i].default = false;
             }
         }
         styleStorage.persist(storageOfStyle);
     }
-    function getAllStyleValues(){
+
+    function getAllStyleValues() {
         let list = storageOfStyle;
 
         return list.map(x => x.value)
     }
-    function getDefault(){
+
+    function getDefault() {
         let list = storageOfStyle;
         for (let i = 0; i < list.length; ++i) {
-            if(list[i].default){
+            if (list[i].default) {
                 return list[i]
             }
         }
@@ -42,6 +42,7 @@ const styleRepo = (function(){
     function getStorage() {
         return storageOfStyle;
     }
+
     return {getStorage, changeDefaultStyle, getDefault, getAllStyleValues};
 })();
 

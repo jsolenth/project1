@@ -2,48 +2,48 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Create Note</title>
-  <!-- CSS -->
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/note.css">
+    <meta charset="utf-8">
+    <title>Create Note</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/note.css">
 
 </head>
 
 <body>
-  <div class="container">
-    <form class="create_new_note" action="index.html" method="get">
-      <label for="title-note">Title</label>
-      <input type="text" id="title-note" name="title" value="" required>
+<div class="container">
+    <form class="create_new_note"  method="get">
+        <label for="title-note">Title</label>
+        <input type="text" id="title-note" name="title" value="" required>
 
-      <label for="description-note">Description</label>
-      <textarea name="description" id="description-note" rows="8" cols="80"></textarea>
+        <label for="description-note">Description</label>
+        <textarea name="description" id="description-note" rows="8" cols="80"></textarea>
 
-      <label>Importance</label>
-      <div class="rating">
-        <!-- input id="rating" type="number" min="0" max="5" -->
-        <span>&#9786;</span><span>&#9786;</span><span>&#9786;</span><span>&#9786;</span><span class="rate">&#9786;</span>
-      </div>
+        <label>Importance</label>
+        <div class="rating">
+            <span>&#9786;</span><span>&#9786;</span><span>&#9786;</span><span>&#9786;</span><span
+                class="rate">&#9786;</span>
+        </div>
 
-      <label for="datepicker">Done Until</label>
-      <input type="text" id="datepicker" name="datepicker">
+        <label for="datepicker">Done Until</label>
+        <input type="text" id="datepicker" name="datepicker">
 
-      <button type="submit">Save</button>
+        <button type="submit">Save</button>
 
-      <button class="cancel">Cancel</button>
+        <button class="cancel">Cancel</button>
     </form>
-  </div>
-  <!-- JS -->
-  <script type="text/javascript" src="js/libs/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type="text/javascript" src="js/array.js"></script>
-  <script type="text/javascript" src="js/libs/moment-with-locales.min.js"></script>
-  <script type="text/javascript" src="js/utilis/ajaxUtil.js"></script>
-  <script type="text/javascript" src="js/dataStyle.js"></script>
-  <script type="text/javascript" src="js/services/restClient.js"></script>
-  <script type="text/javascript" src="js/controllers/noteController.js"></script>
-  <script type="text/javascript" src="js/modelStyle.js"></script>
+</div>
+<!-- JS -->
+<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="js/array.js"></script>
+<script type="text/javascript" src="js/libs/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="js/utilis/ajaxUtil.js"></script>
+<script type="text/javascript" src="js/dataStyle.js"></script>
+<script type="text/javascript" src="js/services/restClient.js"></script>
+<script type="text/javascript" src="js/controllers/noteController.js"></script>
+<script type="text/javascript" src="js/modelStyle.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,4 @@
 //Model
-
-//import Datastore from 'nedb-promise'
 const Datastore = require('nedb-promise');
 
 function makeid() {
@@ -13,7 +11,6 @@ function makeid() {
     return text;
 }
 
-/*export*/
 class Note {
     constructor(paramObj) {
         //this.id = makeid();
@@ -29,7 +26,6 @@ class Note {
 
 module.exports = Note;
 
-/*export*/
 class NoteStore {
     constructor(db) {
         this.db = db || new Datastore({filename: './data/notes.db', autoload: true});
@@ -64,34 +60,3 @@ class NoteStore {
 }
 
 module.exports = new NoteStore();
-
-
-//export const noteStore = new NoteStore();
-
-
-/**
- * Note Storage
- */
-// const noteStorage = (function(){
-//     "use strict";
-//
-//     let storage = readFromLocalStorage();
-//     writeToLocalStorage(storage);
-//
-//     function getAll() {
-//         return storage;
-//     }
-//     function persist(toPersist) {
-//         storage = toPersist;
-//         writeToLocalStorage(storage);
-//     }
-//     function readFromLocalStorage(toPersist) {
-//         return JSON.parse(localStorage.getItem("noteStorage") || "[ ]");
-//     }
-//     function writeToLocalStorage(toPersist) {
-//         localStorage.setItem("noteStorage", JSON.stringify(toPersist));
-//     }
-//
-//     return { getAll, persist };// zur verfügung stellen nach aussen
-//
-// }()); //Idiom: Immediately-invoked Function Expression (IIFE)

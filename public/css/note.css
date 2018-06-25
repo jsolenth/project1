@@ -15,12 +15,12 @@
     left: 1px;
     position: absolute;
 }
-.rating span.rate:before{
+
+.rating span.rate:before {
     left: 1px;
     position: absolute;
     content: "\2620";
 }
-
 
 form {
     display: grid;

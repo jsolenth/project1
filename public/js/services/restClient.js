@@ -1,13 +1,9 @@
 ;(function (services, $) {
-
-    //const valueStorage = window.services.valueStorage;
     const ajaxUtil = window.util.ajax;
-
 
     function createNote(noteObj) {
         return ajaxUtil.ajax("POST", "note.html", noteObj, {});
     }
-
 
     function getNotes() {
         return ajaxUtil.ajax("GET", "/getnotes", undefined, {});
@@ -26,15 +22,15 @@
     }
 
     function deleteNote(id) {
-        return ajaxUtil.ajax("POST", `/note/${id}`, {delete:true}, {});
+        return ajaxUtil.ajax("POST", `/note/${id}`, {delete: true}, {});
     }
 
     services.restClient = {
         createNote: createNote,
         getNotes: getNotes,
-        updateNote:updateNote,
+        updateNote: updateNote,
         getNote: getNote,
         deleteNote: deleteNote,
-        updateNoteWith:updateNoteWith
+        updateNoteWith: updateNoteWith
     };
 }(window.services = window.services || {}, jQuery));

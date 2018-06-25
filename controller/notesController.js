@@ -1,12 +1,6 @@
-//import {noteStore} from '../services/noteStore'
 const noteStore = require('../services/noteStore');
 
-
-// module.exports.getNotes = function(req, res) {
-//     res.json((await noteStore.all() || []))
-// };
-
-/*export*/ class NotesController {
+class NotesController {
 
     async getNotes(req, res) {
         res.json((await noteStore.all() || []))
@@ -22,7 +16,6 @@ const noteStore = require('../services/noteStore');
         }else{
             res.json(await noteStore.update(req.params.id, req.body));
         }
-
     };
     async updateNoteAdding(req, res) {
             res.json(await noteStore.updateAdding(req.params.id, req.body));
@@ -36,7 +29,5 @@ const noteStore = require('../services/noteStore');
         res.json(await noteStore.delete(req.params.id));
     };
 }
-//const noteController = new NotesController();
-module.exports = new NotesController();//noteController;
 
-//export const notesController = new NotesController();
+module.exports = new NotesController();
