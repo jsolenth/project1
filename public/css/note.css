@@ -64,8 +64,8 @@ form textarea {
 
 @media (min-width: 400px) {
     form {
-        grid-template-columns: 200px 1fr;
-        grid-gap: 16px;
+        grid-template-columns: 100px 1fr;
+        grid-gap: 5px;
     }
 
     label {

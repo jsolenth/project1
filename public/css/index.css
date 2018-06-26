@@ -69,14 +69,35 @@
 
 div.note {
     display: grid;
-    grid-template-columns: 200px 1fr 200px;
+    grid-template-columns: auto 1fr auto;
     grid-gap: 10px;
-    background-color: #8db243;
     margin: 5px 0;
     padding: 3px;
+}
+.finshedinfo{
+    text-align: center;
+}
+.text-info{
+    display: grid;
+    grid-template-rows: 30px auto;
+}
+.control{
+    display: grid;
+    grid-template-rows: auto 30px;
+}
+div.note label{
+    cursor: pointer;
+}
+.note h4{
+    -webkit-margin-before: 0.3em;
+    -webkit-margin-after: 0.3em;
 }
 
 .title-area {
     display: grid;
     grid-template-columns: 1fr auto;
+}
+.description-area{
+    border: 1px solid;
+    padding: 5px;
 }

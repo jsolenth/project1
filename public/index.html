@@ -29,12 +29,12 @@
 
 <script id="note-template" type="text/x-handlebars-template">
     <div id="{{_id}}" class="note">
-        <div class=" ">
+        <div class="finshedinfo">
             <h4>{{finishedDate}}</h4>
             <label><input type="checkbox" class="donecheckbox" name="donecheckbox" value="{{_id}}" {{greetText
                           finished}}>checkbox done</label>
         </div>
-        <div class=" ">
+        <div class="text-info">
             <div class="title-area"><h4>{{title}}</h4>
                 <div class=" ">{{{ratingsym rating}}}</div>
             </div>
@@ -42,7 +42,7 @@
                 {{description}}
             </div>
         </div>
-        <div class="">
+        <div class="control">
             <button value="{{_id}}" type="button" name="edit">Edit</button>
             <button value="{{_id}}" type="button" name="delete">Delete</button>
         </div>
