@@ -20,17 +20,12 @@
             client.getNotes().done(function (notes) {
 
                 notes = sortFilter(notes, orderStr, reverse, filterStr)
-                if (notes.length) {
-                    let html = '';
-                    for (let i = 0; i < notes.length; ++i) {
-                        html += notesRenderer(notes[i]);
-                    }
-                    mainDiv.html(html);
 
-                }else{
+                if (notes.length) {
+                    mainDiv.html(notesRenderer(notes));
+                } else {
                     mainDiv.html('');
                 }
-
             })
 
             function sortFilter(notesArr, orderStr, reverse, filterStr) {
@@ -56,7 +51,6 @@
 
             styleSelect.change(function (event) {
                 changeStyleToSelected($('.styles-page option:selected').val());
-                console.log(event);
             });
             changeStyleToSelected(styleSelect.val());
 

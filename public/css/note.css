@@ -1,3 +1,7 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .rating {
     unicode-bidi: bidi-override;
     direction: rtl;
@@ -25,7 +29,6 @@
 form {
     display: grid;
     padding: 1em;
-    /*background: #f9f9f9;*/
     border: 1px solid #c1c1c1;
 }
 
@@ -35,7 +38,7 @@ form input {
 }
 
 form button {
-    background: lightgrey;
+    background: #949494;
     padding: 0.7em;
     width: 100%;
     border: 0;

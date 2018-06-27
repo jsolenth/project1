@@ -28,6 +28,7 @@
 </div>
 
 <script id="note-template" type="text/x-handlebars-template">
+    {{#each this}}
     <div id="{{_id}}" class="note">
         <div class="finshedinfo">
             <h4>{{finishedDate}}</h4>
@@ -47,6 +48,7 @@
             <button value="{{_id}}" type="button" name="delete">Delete</button>
         </div>
     </div>
+    {{/each}}
 </script>
 <!-- JS -->
 <script type="text/javascript" src="js/array.js"></script>
